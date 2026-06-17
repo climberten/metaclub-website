@@ -1,850 +1,1090 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
-
-<!-- Mirrored from leverage.codings.dev/demo-2-one-page by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Nov 2020 01:16:23 GMT -->
-
+<html lang="it">
 <head>
 
-<!-- Google tag (gtag.js) -->
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0S49PJW2D"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
+  window.dataLayer=window.dataLayer||[];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-S0S49PJW2D');
+  gtag('js',new Date());
+  gtag('config','G-S0S49PJW2D');
 </script>
-    <!-- ==============================================
-        Basic Page Needs
-        =============================================== -->
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>METACLUB — Take Control Of Your Club</title>
+<meta name="description" content="Il sistema più avanzato per gestire eventi, liste, tavoli, ingressi e provvigioni nel tuo club.">
+<meta name="author" content="Enzo Buffa">
 
-    <title>METACLUB - Take Control Of Your Club</title>
+<link rel="shortcut icon" href="assets/images/favicon.ico">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
 
-    <meta name="description" content="App per gestione liste on line">
-    <meta name="subject" content="App per gestione liste on line">
-    <meta name="author" content="Enzo Buffa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
-    <!-- ==============================================
-        Favicons
-        =============================================== -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+<style>
+/* ============================================================
+   METACLUB — Design System
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- ==============================================
-        Vendor Stylesheet
-        =============================================== -->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/slider.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/vendor/icons.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/animation.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/gallery.min.css">
-    <link rel="stylesheet" href="assets/css/vendor/cookie-notice.min.css">
+:root {
+  --bg:           #07070f;
+  --bg-2:         #0c0c1a;
+  --surface:      #111124;
+  --surface-2:    rgba(255,255,255,0.03);
+  --border:       rgba(255,255,255,0.07);
+  --border-h:     rgba(255,255,255,0.14);
+  --accent:       #7c3aed;
+  --accent-2:     #a855f7;
+  --accent-glow:  rgba(124,58,237,0.35);
+  --gold:         #f59e0b;
+  --gold-l:       #fcd34d;
+  --text:         #f1f5f9;
+  --text-2:       #94a3b8;
+  --text-3:       #475569;
+  --r:            16px;
+  --r-sm:         10px;
+  --r-lg:         24px;
+  --fd:           'Space Grotesk', sans-serif;
+  --fb:           'Inter', sans-serif;
+}
 
-    <!-- ==============================================
-        Custom Stylesheet
-        =============================================== -->
-    <link rel="stylesheet" href="assets/css/default.css">
-    <link rel="stylesheet" href="assets/css/theme-pink.css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-        rel="stylesheet">
-    <!-- ==============================================
-        Theme Settings
-        =============================================== -->
-    <style>
-        :root {
-            --header-bg-color: #111111;
-            --nav-item-color: #f5f5f5;
-            --top-nav-item-color: #f5f5f5;
-            --hero-bg-color: #000000;
-            --section-1-bg-color: #f5f5f5;
-            --section-2-bg-color: #eeeeee;
-            --section-3-bg-color: #111111;
-            --section-4-bg-color: #eeeeee;
-            --section-5-bg-color: #111111;
-            --section-6-bg-color: #f5f5f5;
-            --footer-bg-color: #191919;
-        }
+html { scroll-behavior: smooth; }
 
-        .icon {
-            font-size: 50px;
-            height: 56px;
-        }
-    </style>
+body {
+  font-family: var(--fb);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
+/* ── Typography ── */
+h1,h2,h3,h4 { font-family: var(--fd); line-height: 1.12; letter-spacing: -0.025em; }
+
+.grad {
+  background: linear-gradient(135deg,#fff 0%,#c4b5fd 45%,#7c3aed 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.gold {
+  background: linear-gradient(135deg,var(--gold-l),var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── Layout ── */
+.container      { max-width:1200px; margin:0 auto; padding:0 24px; }
+.container-wide { max-width:1400px; margin:0 auto; padding:0 24px; }
+
+/* ── Scroll Reveal ── */
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+.d1{transition-delay:.08s} .d2{transition-delay:.16s} .d3{transition-delay:.24s}
+.d4{transition-delay:.32s} .d5{transition-delay:.40s} .d6{transition-delay:.48s}
+
+/* ── Section tag ── */
+.tag {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:5px 14px; border-radius:999px;
+  border:1px solid rgba(124,58,237,.3);
+  background:rgba(124,58,237,.1);
+  font-size:11px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:#a78bfa;
+  margin-bottom:20px;
+}
+.tag::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:#a78bfa; flex-shrink:0;
+  animation: blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── Buttons ── */
+.btn-p {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:13px 26px; border-radius:999px;
+  background:var(--accent); color:#fff;
+  font:600 15px/1 var(--fb); text-decoration:none;
+  border:none; cursor:pointer;
+  transition:background .2s, box-shadow .2s, transform .15s;
+}
+.btn-p:hover { background:var(--accent-2); box-shadow:0 0 28px var(--accent-glow); transform:translateY(-2px); color:#fff; text-decoration:none; }
+
+.btn-s {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:13px 26px; border-radius:999px;
+  background:rgba(255,255,255,.05); color:var(--text);
+  font:600 15px/1 var(--fb); text-decoration:none;
+  border:1px solid var(--border); cursor:pointer;
+  transition:background .2s, border-color .2s, transform .15s;
+}
+.btn-s:hover { background:rgba(255,255,255,.09); border-color:var(--border-h); transform:translateY(-2px); color:var(--text); text-decoration:none; }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+#nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:0 24px;
+  transition:background .3s,border-color .3s,backdrop-filter .3s;
+}
+#nav.stuck {
+  background:rgba(7,7,15,.88);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid var(--border);
+}
+.nav-in {
+  max-width:1200px; margin:0 auto;
+  height:70px; display:flex; align-items:center;
+  justify-content:space-between; gap:24px;
+}
+.nav-logo {
+  font-family:var(--fd); font-size:21px; font-weight:800;
+  letter-spacing:-.03em; text-decoration:none;
+  background:linear-gradient(135deg,#fff,#a78bfa);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
+.nav-links a {
+  color:var(--text-2); text-decoration:none; font-size:14px; font-weight:500;
+  padding:8px 14px; border-radius:var(--r-sm);
+  transition:color .2s,background .2s;
+}
+.nav-links a:hover { color:var(--text); background:rgba(255,255,255,.06); }
+.nav-right { display:flex; align-items:center; gap:12px; }
+
+/* hamburger */
+.burger {
+  display:none; flex-direction:column; gap:5px; cursor:pointer;
+  padding:8px; border-radius:var(--r-sm);
+  background:rgba(255,255,255,.05); border:1px solid var(--border);
+}
+.burger span { display:block; width:22px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
+
+/* mobile nav */
+#mob-nav {
+  display:none; position:fixed; top:70px; left:0; right:0;
+  background:rgba(7,7,15,.97); backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  padding:16px 24px 28px; z-index:199;
+  flex-direction:column; gap:6px;
+}
+#mob-nav.open { display:flex; }
+#mob-nav a {
+  color:var(--text-2); text-decoration:none; font-size:16px; font-weight:500;
+  padding:13px 16px; border-radius:var(--r-sm);
+  transition:color .2s,background .2s;
+}
+#mob-nav a:hover { color:var(--text); background:rgba(255,255,255,.06); }
+#mob-nav .mob-cta { margin-top:8px; background:var(--accent); color:#fff !important; border-radius:999px; text-align:center; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero {
+  position:relative; height:100vh; min-height:700px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+#hero-vid {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; opacity:.3;
+}
+.hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,
+    rgba(7,7,15,.25) 0%,
+    rgba(7,7,15,.05) 35%,
+    rgba(7,7,15,.7)  75%,
+    rgba(7,7,15,1)   100%);
+}
+.hero-content {
+  position:relative; z-index:2;
+  text-align:center; max-width:840px; padding:0 24px;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 16px; border-radius:999px;
+  border:1px solid rgba(124,58,237,.45);
+  background:rgba(124,58,237,.1);
+  font-size:13px; font-weight:500; color:#c4b5fd;
+  margin-bottom:28px;
+  animation:fadeUp .8s ease both;
+}
+.badge-dot {
+  width:7px; height:7px; border-radius:50%; background:#a78bfa;
+  animation:blink 2s infinite;
+}
+.hero-h1 {
+  font-size:clamp(50px,9vw,94px); font-weight:800;
+  letter-spacing:-.045em; line-height:1.04;
+  margin-bottom:24px;
+  animation:fadeUp .85s .15s ease both;
+}
+.hero-sub {
+  font-size:clamp(16px,2.2vw,19px); color:var(--text-2);
+  max-width:560px; margin:0 auto 40px;
+  animation:fadeUp .85s .3s ease both;
+}
+.hero-btns {
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; flex-wrap:wrap;
+  animation:fadeUp .85s .45s ease both;
+}
+
+/* scroll hint */
+.scroll-hint {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px; z-index:2;
+  animation:fadeUp .9s .9s ease both;
+}
+.scroll-hint span { font-size:10px; letter-spacing:.1em; color:var(--text-3); text-transform:uppercase; }
+.mouse {
+  width:24px; height:38px; border:2px solid rgba(255,255,255,.18);
+  border-radius:999px; display:flex; justify-content:center; padding-top:6px;
+}
+.mouse::before {
+  content:''; width:3px; height:8px; background:rgba(255,255,255,.35);
+  border-radius:999px; animation:mscroll 2s infinite;
+}
+@keyframes mscroll { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(14px)} }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ============================================================
+   STATS
+   ============================================================ */
+#stats {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.stats-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  background:var(--border); gap:1px;
+}
+.stat {
+  background:var(--surface); padding:36px 24px; text-align:center;
+}
+.stat-num {
+  font-family:var(--fd); font-size:40px; font-weight:800;
+  letter-spacing:-.04em; display:block; line-height:1; margin-bottom:8px;
+  background:linear-gradient(135deg,#fff,#a78bfa);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.stat-lbl { font-size:13px; color:var(--text-2); font-weight:500; }
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+#features { padding:120px 0; background:var(--bg); }
+
+.sec-head { text-align:center; margin-bottom:70px; }
+.sec-h2 {
+  font-size:clamp(30px,5vw,52px); font-weight:800;
+  letter-spacing:-.03em; margin-bottom:18px;
+}
+.sec-p {
+  font-size:17px; color:var(--text-2);
+  max-width:580px; margin:0 auto; line-height:1.75;
+}
+
+.feat-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; background:var(--border); border-radius:var(--r-lg); overflow:hidden;
+}
+.feat-card {
+  background:var(--surface); padding:48px 36px;
+  transition:background .3s; position:relative; overflow:hidden;
+}
+.feat-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(124,58,237,.55),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.feat-card:hover { background:#12122a; }
+.feat-card:hover::before { opacity:1; }
+.feat-icon {
+  width:54px; height:54px; border-radius:var(--r-sm);
+  background:rgba(124,58,237,.14); border:1px solid rgba(124,58,237,.22);
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; color:#a78bfa; margin-bottom:22px;
+  transition:background .3s,box-shadow .3s;
+}
+.feat-card:hover .feat-icon { background:rgba(124,58,237,.24); box-shadow:0 0 18px rgba(124,58,237,.28); }
+.feat-card h3 { font-size:20px; font-weight:700; margin-bottom:14px; }
+.feat-card > p { font-size:15px; color:var(--text-2); line-height:1.7; margin-bottom:22px; }
+.feat-list { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.feat-list li {
+  display:flex; align-items:center; gap:10px;
+  font-size:14px; color:var(--text-2);
+}
+.feat-list li::before {
+  content:''; width:18px; height:18px; flex-shrink:0;
+  border-radius:50%; background:rgba(124,58,237,.18);
+  border:1px solid rgba(124,58,237,.38);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size:10px; background-position:center; background-repeat:no-repeat;
+}
+
+/* ============================================================
+   MODULES
+   ============================================================ */
+#modules {
+  padding:120px 0; background:var(--bg-2);
+  position:relative; overflow:hidden;
+}
+#modules::before {
+  content:''; position:absolute; top:-180px; left:50%;
+  transform:translateX(-50%); pointer-events:none;
+  width:700px; height:700px;
+  background:radial-gradient(circle,rgba(124,58,237,.07) 0%,transparent 60%);
+}
+.mod-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+}
+.mod-card {
+  background:var(--surface-2); border:1px solid var(--border);
+  border-radius:var(--r); padding:32px;
+  transition:border-color .3s,background .3s,transform .3s;
+  position:relative; overflow:hidden;
+}
+.mod-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0; transition:opacity .3s;
+}
+.mod-card:hover { border-color:rgba(124,58,237,.3); background:rgba(124,58,237,.05); transform:translateY(-5px); }
+.mod-card:hover::after { opacity:1; }
+.mod-icon {
+  font-size:26px; width:50px; height:50px;
+  display:flex; align-items:center; justify-content:center;
+  border-radius:var(--r-sm); background:rgba(124,58,237,.12);
+  color:#a78bfa; margin-bottom:18px; transition:background .3s;
+}
+.mod-card:hover .mod-icon { background:rgba(124,58,237,.22); }
+.mod-card h3 { font-size:18px; font-weight:700; margin-bottom:10px; }
+.mod-card p  { font-size:14px; color:var(--text-2); line-height:1.65; }
+
+/* ============================================================
+   SOFTWARE
+   ============================================================ */
+#software { padding:120px 0; background:var(--bg); }
+
+.sw-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:22px;
+}
+.sw-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r-lg); overflow:hidden;
+  transition:border-color .3s,transform .3s;
+  display:flex; flex-direction:column;
+}
+.sw-card:hover { border-color:rgba(124,58,237,.35); transform:translateY(-6px); }
+.sw-img {
+  width:100%; height:230px; object-fit:cover; object-position:top;
+  display:block; filter:brightness(.85) saturate(.9);
+  transition:filter .35s;
+}
+.sw-card:hover .sw-img { filter:brightness(1) saturate(1); }
+.sw-body { padding:32px; flex:1; display:flex; flex-direction:column; }
+.sw-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:4px 11px; border-radius:999px;
+  background:rgba(245,158,11,.1); border:1px solid rgba(245,158,11,.25);
+  font-size:10px; font-weight:700; letter-spacing:.08em;
+  color:var(--gold); text-transform:uppercase; margin-bottom:14px;
+}
+.sw-body h3 { font-size:22px; font-weight:800; margin-bottom:10px; }
+.sw-body p  { font-size:14px; color:var(--text-2); line-height:1.65; flex:1; margin-bottom:22px; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+#about { padding:120px 0; background:var(--bg-2); }
+.about-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+}
+.about-img-wrap { position:relative; border-radius:var(--r-lg); overflow:hidden; }
+.about-img-wrap img {
+  width:100%; height:520px; object-fit:cover; display:block;
+  filter:brightness(.75) saturate(.9); border-radius:var(--r-lg);
+}
+.about-img-wrap::after {
+  content:''; position:absolute; inset:0; border-radius:var(--r-lg);
+  border:1px solid rgba(124,58,237,.2); pointer-events:none;
+}
+.about-txt h2 { font-size:clamp(30px,4vw,46px); font-weight:800; margin-bottom:18px; }
+.about-txt > p { font-size:16px; color:var(--text-2); line-height:1.78; margin-bottom:36px; }
+.about-items { display:flex; flex-direction:column; gap:16px; }
+.about-item {
+  display:flex; gap:18px; align-items:flex-start;
+  padding:22px; background:var(--surface-2);
+  border:1px solid var(--border); border-radius:var(--r);
+  transition:border-color .3s,background .3s;
+}
+.about-item:hover { border-color:rgba(124,58,237,.25); background:rgba(124,58,237,.04); }
+.ab-icon {
+  width:42px; height:42px; flex-shrink:0;
+  border-radius:var(--r-sm); background:rgba(124,58,237,.14);
+  border:1px solid rgba(124,58,237,.24);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; color:#a78bfa;
+}
+.about-item h4 { font-size:15px; font-weight:700; margin-bottom:6px; }
+.about-item p  { font-size:13px; color:var(--text-2); line-height:1.6; }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+#contact {
+  padding:120px 0; background:var(--bg);
+  position:relative; overflow:hidden;
+}
+#contact::after {
+  content:''; position:absolute; bottom:-160px; right:-160px; pointer-events:none;
+  width:500px; height:500px;
+  background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 65%);
+}
+.contact-wrap {
+  display:grid; grid-template-columns:1fr 1.45fr; gap:80px; align-items:start;
+}
+.contact-info h2 { font-size:clamp(26px,4vw,42px); font-weight:800; margin-bottom:14px; }
+.contact-info > p { font-size:16px; color:var(--text-2); line-height:1.75; margin-bottom:36px; }
+.cdetails { display:flex; flex-direction:column; gap:14px; }
+.cdetail {
+  display:flex; align-items:center; gap:14px;
+  font-size:15px; color:var(--text-2);
+}
+.cdetail-icon {
+  width:40px; height:40px; flex-shrink:0;
+  border-radius:var(--r-sm); background:var(--surface);
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:18px; color:#a78bfa;
+}
+
+.cf {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--r-lg); padding:44px;
+}
+.cf-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:0; }
+.fg { display:flex; flex-direction:column; gap:7px; margin-bottom:14px; }
+.fg label { font-size:12px; font-weight:600; color:var(--text-2); letter-spacing:.03em; text-transform:uppercase; }
+.fg input, .fg select, .fg textarea {
+  background:rgba(255,255,255,.04); border:1px solid var(--border);
+  border-radius:var(--r-sm); padding:13px 15px;
+  color:var(--text); font:15px var(--fb);
+  transition:border-color .2s,background .2s,box-shadow .2s;
+  outline:none; width:100%; appearance:none;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color:rgba(124,58,237,.6);
+  background:rgba(124,58,237,.05);
+  box-shadow:0 0 0 3px rgba(124,58,237,.12);
+}
+.fg input::placeholder, .fg textarea::placeholder { color:var(--text-3); }
+.fg option { background:#1a1a2e; }
+.fg textarea { resize:vertical; min-height:115px; }
+.cf-note { font-size:12px; color:var(--text-3); margin-bottom:18px; }
+#form-ok {
+  display:none; text-align:center; padding:28px 16px;
+}
+#form-ok .ok-ico { font-size:3rem; display:block; margin-bottom:12px; }
+#form-ok h3 { font-size:22px; color:#a78bfa; margin-bottom:8px; }
+#form-ok p  { font-size:15px; color:var(--text-2); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  padding:80px 0 0;
+}
+.footer-grid {
+  display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:48px; padding-bottom:60px;
+}
+.f-brand p {
+  font-size:14px; color:var(--text-2); line-height:1.72;
+  margin:14px 0 22px; max-width:240px;
+}
+.f-social { display:flex; gap:9px; }
+.f-social a {
+  width:37px; height:37px; border-radius:var(--r-sm);
+  background:rgba(255,255,255,.05); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--text-2); font-size:17px; text-decoration:none;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.f-social a:hover { background:rgba(124,58,237,.14); border-color:rgba(124,58,237,.3); color:#a78bfa; }
+.f-col h5 {
+  font-size:12px; font-weight:700; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--text); margin-bottom:18px;
+}
+.f-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.f-col ul a { font-size:14px; color:var(--text-2); text-decoration:none; transition:color .2s; }
+.f-col ul a:hover { color:var(--text); }
+.f-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.f-tag {
+  display:inline-block; padding:5px 12px; border-radius:999px;
+  background:rgba(255,255,255,.04); border:1px solid var(--border);
+  font-size:12px; color:var(--text-2); text-decoration:none;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.f-tag:hover { background:rgba(124,58,237,.1); border-color:rgba(124,58,237,.3); color:#a78bfa; text-decoration:none; }
+
+.f-bottom {
+  border-top:1px solid var(--border); padding:22px 0;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:10px;
+}
+.f-bottom p { font-size:13px; color:var(--text-3); }
+.f-bottom a { color:var(--text-2); text-decoration:none; }
+.f-bottom a:hover { color:var(--text); }
+
+/* ── Scroll to top ── */
+#s2t {
+  position:fixed; bottom:30px; right:30px;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--accent); border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:20px;
+  box-shadow:0 4px 22px rgba(124,58,237,.45);
+  opacity:0; transform:translateY(14px);
+  transition:opacity .3s,transform .3s,background .2s;
+  z-index:100; text-decoration:none;
+}
+#s2t.on { opacity:1; transform:translateY(0); }
+#s2t:hover { background:var(--accent-2); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1024px){
+  .feat-grid { grid-template-columns:1fr 1fr; }
+  .sw-grid   { grid-template-columns:1fr; max-width:580px; margin:0 auto; }
+  .contact-wrap { grid-template-columns:1fr; gap:48px; }
+  .footer-grid  { grid-template-columns:1fr 1fr; gap:40px; }
+}
+@media(max-width:768px){
+  .nav-links,.nav-right { display:none; }
+  .burger { display:flex; }
+  .feat-grid  { grid-template-columns:1fr; }
+  .mod-grid   { grid-template-columns:1fr 1fr; }
+  .about-grid { grid-template-columns:1fr; }
+  .about-img-wrap { display:none; }
+  .stats-grid { grid-template-columns:1fr 1fr; }
+  .cf-row { grid-template-columns:1fr; }
+  .cf { padding:26px 18px; }
+  .footer-grid { grid-template-columns:1fr; }
+  .f-bottom { flex-direction:column; text-align:center; }
+}
+@media(max-width:480px){
+  .mod-grid  { grid-template-columns:1fr; }
+  .hero-btns { flex-direction:column; width:100%; }
+  .hero-btns .btn-p,.hero-btns .btn-s { width:100%; justify-content:center; }
+}
+
+/* icon size reset */
+.material-icons-outlined { font-size:inherit !important; line-height:inherit !important; vertical-align:middle; }
+</style>
 </head>
 
-<body class="home">
+<body>
 
-    <!-- Header -->
+<!-- ===================== NAVBAR ===================== -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#" class="nav-logo">METACLUB</a>
+    <ul class="nav-links">
+      <li><a href="#features">Funzionalità</a></li>
+      <li><a href="#modules">Moduli</a></li>
+      <li><a href="#software">Software</a></li>
+      <li><a href="#about">Supporto</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#contact" class="btn-p" style="padding:10px 20px;font-size:14px;">
+        <span class="material-icons-outlined" style="font-size:15px">rocket_launch</span>
+        Richiedi Demo
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
+<div id="mob-nav">
+  <a href="#features">Funzionalità</a>
+  <a href="#modules">Moduli</a>
+  <a href="#software">Software</a>
+  <a href="#about">Supporto</a>
+  <a href="#contact" class="mob-cta">Richiedi Demo Gratuita</a>
+</div>
 
-    <!-- Hero -->
-    <section id="slider" class="hero p-0">
-        <div class="swiper-container no-slider animation slider-h-100">
-            <div class="swiper-wrapper">
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <video id="hero-vid" autoplay muted loop playsinline>
+    <source src="assets/videos/metaclub.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
 
-                <!-- Item 1 -->
-                <div class="swiper-slide slide-center">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Gestionale per discoteche ed eventi
+    </div>
+    <h1 class="hero-h1">
+      <span class="grad">Take Control</span><br>Of Your Club
+    </h1>
+    <p class="hero-sub">
+      Il sistema più completo per gestire eventi, liste, tavoli, ingressi e provvigioni — tutto in tempo reale, ovunque ti trovi.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-p">
+        <span class="material-icons-outlined" style="font-size:18px">rocket_launch</span>
+        Richiedi Demo Gratuita
+      </a>
+      <a href="#features" class="btn-s">
+        Scopri le Funzionalità
+      </a>
+    </div>
+  </div>
 
-                    <video type="video/mp4" class="full-image" data-mask="70" src="assets/videos/metaclub.mp4" autoplay
-                        muted loop></video>
+  <div class="scroll-hint">
+    <div class="mouse"></div>
+    <span>Scorri</span>
+  </div>
+</section>
 
-                    <!-- 
-                            Suggestion: Add a video to your assets folder and configure it here.
+<!-- ===================== STATS ===================== -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-lbl">Digital — Zero carta</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">Real-Time</span>
+        <span class="stat-lbl">Dati aggiornati in diretta</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">SSL</span>
+        <span class="stat-lbl">Comunicazioni cifrate</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">24/7</span>
+        <span class="stat-lbl">Supporto durante gli eventi</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-                            <video type="video/mp4" class="full-image" data-mask="70" src="assets/videos/yourvideo.mp4" autoplay muted loop></video> 
-                        -->
-
-                    <div class="slide-content row">
-                        <div class="col-12 d-flex inner">
-                            <div class="center align-self-center text-center">
-                                <img src="assets/images/logo_trasparente2.png" alt="Girl in a jacket" width="50%"
-                                    height="300">
-                                <!-- <h1 data-aos="zoom-out-up" data-aos-delay="400" class="title effect-static-text" style="color:white">METACLUB</h1> -->
-                                <h3 data-aos="zoom-out-up" data-aos-delay="400"><span
-                                        style="color:#ffffff;font-size: 130%;">METACLUB</span></h3>
-                                <h3 data-aos="zoom-out-up" data-aos-delay="400"><span
-                                        style="color:#4a3c96;font-size: 100%;">Take Control Of Your Club</span></h3>
-                                <a href="#contact" data-aos="zoom-out-up" data-aos-delay="1200"
-                                    class="smooth-anchor ml-auto mr-auto mt-5 btn primary-button"><i
-                                        class="icon-cup"></i>RICHIEDI UNA DEMO GRATUITA</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <!-- Hero -->
-    <section id="slider" class="hero p-0 odd" style="background-color: #040402;">
-        <div class="swiper-container full-slider featured animation slider-h-100">
-            <div class="swiper-wrapper">
-
-
-
-                <!-- Item 2 -->
-                <div class="swiper-slide slide-center">
-                    <img data-aos="zoom-out-up" data-aos-delay="800" src="assets/images/hero-5.jpg" class="hero-image"
-                        alt="Hero Image">
-                    <div class="slide-content row" data-mask-768="50">
-                        <div class="col-12 d-flex inner">
-                            <div class="left align-self-center text-center text-md-left">
-                                <h2 data-aos="zoom-out-up" data-aos-delay="400" class="title effect-static-text">
-                                    Controlla <br />il tuo Club</h2>
-                                <p data-aos="zoom-out-up" data-aos-delay="800" class="description"> Gestisci e
-                                    supervisiona con sicurezza le attività dei tuoi eventi ovunque ti trovi </p>
-                                <a href="#contact" data-aos="zoom-out-up" data-aos-delay="1200"
-                                    class="smooth-anchor ml-auto mr-auto ml-md-0 mt-4 btn dark-button">RICHIEDI
-                                    INFORMAZIONI</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <!-- Pricing -->
-    <section id="pricing" class="section-3 odd plans featured">
-        <div class="container">
-            <div class="row text-center intro">
-                <div class="col-12">
-                    <h2>Perchè gli event organizers utilizzano METACLUB ?</h2>
-                    <p class="text-max-800">METACLUB è il sistema più completo ed affidabile per gestire e monitorare il
-                        tuo club avvalendosi di tecnologie software di ultima generazione.<br />
-                        E' studiato per migliorare e rendere più efficiente il lavoro del personale e dei collaboratori,
-                        ottimizzando
-                        le risorse per ottenere maggiori profitti.</p>
-                </div>
-            </div>
-
-
-            <div class="row justify-content-center text-center items">
-                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">account_tree</span>
-                        <h4>Organizza le Risorse</h4>
-                        <!-- <span class="price"><i>$</i>129</span> -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Digitalizzazione delle informazioni</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Pianificazione Eventi</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Struttura Gerarchica dello Staff</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Condivisione Risorse</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Dati in tempo reale</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>Scopri Come</a>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">contacts</span>
-                        <h4>Sorveglia il Personale</h4>
-                        <!-- <span class="price"><i>$</i>129</span> -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Controllo Operatività</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Misurazione Efficienza</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Visulizzazione Storico </span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Gestione pagamenti</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Premiazioni</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>Scopri Come</a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">widgets</span>
-                        <h4>Ottimizza i Processi</h4>
-                        <!-- <span class="price"><i>$</i>129</span> -->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Smaltimento code all'ingresso</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Erogazione rapida drink</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Riduzione costi di gestione</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Visione Situazione Economica</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center text-left">
-                                <span>Applicazione Strategie</span>
-                                <i class="icon-min m-0 icon-check text-right"></i>
-                            </li>
-
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>Scopri Come</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row text-center intro">
-                <div class="col-12">
-                    <br /><br />
-                    <p class="text-max-800" style="max-width:900px">I dati sono esportabili nei formati più comuni e
-                        cancellati in qualsiasi momento qualora lo si desidera.</p>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About [image] -->
-    <section id="about" class="section-1 odd highlights image-right" style="background-color: #191919;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6 align-self-center text-center text-md-left">
-                    <div class="row intro">
-                        <div class="col-12 p-0">
-                            <h2 class="featured alt">Sempre a tuo fianco</h2>
-                            <p>Collaboriamo attivamente agli eventi per supportare gli organizzatori nella gestione dei propri locali, fornendo soluzioni alle problematiche rilevate e proponendo metodi per ottimizzare la produzione, <b style="color: #f9f9f9;">mantenendo le strategie commerciali</b>.</p>
-                        </div>
-                    </div>
-                    <div class="row items">
-                        <div class="col-12 p-0">
-                            <div class="row item">
-                                <div class="col-12 col-md-2 align-self-center">
-                                    <span class="material-icons icon">
-                                        <span class="material-icons icon">
-                                            people_outline
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="col-12 col-md-9 align-self-center">
-                                    <h4>Configurazione Assistita e Formazione</h4>
-                                    <p>Seguiamo i nostri clienti passo dopo posso, dalla fase di configurazione, fino al raggiungimento della piena autonomia nell'utilizzo del sistema</p>
-                                </div>
-                            </div>
-                            <div class="row item">
-                                <div class="col-12 col-md-2 align-self-center">
-                                    <span class="material-icons icon">
-                                        schedule
-                                    </span>
-                                </div>
-                                <div class="col-12 col-md-9 align-self-center">
-                                    <h4>Supporto Immediato</h4>
-                                    <p>I nostri operatori restano attivi prima e durante l'evento per fornire tempestivamente qualsiasi tipo di supporto o delucidazione</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery col-12 col-md-6">
-                    <a href="assets/images/about-4.jpg">
-                        <img src="assets/images/about-4.jpg" class="fit-image" alt="About Us">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="pricing" class="section-3 odd plans featured" style="background-color: #000000;">
-        <div class="container">
-            <div class="row text-center intro">
-                <div class="col-12">
-                    <h2 style="text-align: center;color:white"> Non è mai stato così <br />Veloce, Comodo e Sicuro
-                        gestire </h2>
-                </div>
-                <div class="row justify-content-center text-center items">
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">dvr</span>
-                            <h4 style="color: white;"> Liste</h4>
-                            <p>Creazione e condivisione delle liste tramite app con gestione avanzata dei permessi per ogni singola lista. </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">book</span>
-                            <h4 style="color: white;">Prenotazioni Tavoli</h4>
-                            <p>Visione topografica delle prenotazione e gestione delle comande tramite smartphone. </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">qr_code_2</span>
-                            <h4 style="color: white;">Controlli Ingressi</h4>
-                            <p>I pagamenti al botteghino sono più celeri grazie ai sistemi avanzati di identifcazione della prenotazione.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">group</span>
-                            <h4 style="color: white;">Provvigioni PR</h4>
-                            <p>La provvigioni sono generate automaticamente, rese facoltativamente visibile al pr e  visionabile nel corso dell'evento. </p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">liquor</span>
-                            <h4 style="color: white;">Produzione Bar</h4>
-                            <p>Visione in tempo reale sugli incassi delle varie casse bar e report sulle quantità dei prodotti venduti.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-4 item">
-                        <div class="card no-hover">
-                            <span class="material-icons-outlined icon">domain</span>
-                            <h4 style="color: white;">Magazzino</h4>
-                            <p>Gestione di più magazzini per la tracciabilità del ciclo d vita del prodotto. </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-    </section>
-
-
-    <!-- Pricing -->
-    <section id="pricing" class="section-3 odd plans featured">
-        <div class="container">
-            <div class="row text-center intro">
-                <div class="col-12">
-                    <h2>Software Stabili e Performanti </h2>
-                    <p class="text-max-800">Tutti i software sono stati programmati con linguaggi di programmazione di
-                        ultima generazione,
-                        rendendo stabile e sicuro lo svolgimento del lavoro. </p>
-                    <p class="text-max-800" style="max-width:900px">Le informazioni tra i vari terminali avvengono
-                        tramite protoccoli SSL <br />garantendo ai dati di non essere intercettati.
-                    </p>
-                </div>
-            </div>
-            <div class="row justify-content-center text-center items">
-
-                <div class="col-12 col-md-6 col-lg-6 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">tune</span>
-                        <h4>META ADMIN</h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center ">
-                                <span>
-                                    Pannello di controllo per configuare il proprio club ed applicare agli eventi le
-                                    proprie strategie commerciali.
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    <img src="assets/images/software/tablet.jpg" alt="Fit Image">
-                                </span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>RICHIEDI UNA DEMO</a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">aod</span>
-                        <h4>META APP</h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    APP per monitorare lo stato delle prenotazioni e delle liste, dei guadagni e dei
-                                    costi, ovunque ti trovi.
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    <img src="assets/images/software/app.jpg" alt="Fit Image">
-                                </span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>RICHIEDI UNA DEMO</a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">laptop_mac</span>
-                        <h4>META CHECK-IN</h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    Applicazione Desktop per il controllo rapido degli ingressi, riducendo notevelmente
-                                    i tempi di attesa al botteghino.
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    <img src="assets/images/software/ticket.jpg" alt="Fit Image">
-                                </span>
-                            </li>
-
-
-                            <!-- <div class="swiper-slide slide-center item">
-                                <img src="assets/images/clubs/1.jpg"  alt="Fit Image">
-                            </div> -->
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>RICHIEDI UNA DEMO</a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-6 align-self-center text-center item">
-                    <div class="card">
-                        <span class="material-icons-outlined icon">point_of_sale</span>
-                        <h4>META ORDER</h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center ">
-                                <span>
-                                    Applicazione per la generazione sicura e veloce delle comande e tenere traccia della
-                                    produzione bar.
-                                </span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span>
-                                    <img src="assets/images/software/bar2.jpg" alt="Fit Image">
-                                </span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="smooth-anchor btn mx-auto primary-button"><i
-                                class="icon-arrow-right-circle"></i>RICHIEDI UNA DEMO</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Partners
-    <section id="partner" class="section-5 odd  featured">
-        <div class="overflow-holder">
-            <div class="container">
-                <div class="swiper-container min-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/1.jpg"  alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/2.jpg"  alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/3.jpg" alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/4.jpg" alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/5.jpg" alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/6.jpg"  alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/7.jpg"  alt="Fit Image">
-                        </div>
-                        <div class="swiper-slide slide-center item">
-                            <img src="assets/images/clubs/8.jpg"  alt="Fit Image">
-                        </div>
-                     
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Contact -->
-    <section id="contact" class="section-6 form">
-        <div class="container smaller">
-            <div class="row text-center intro">
-                <div class="col-12">
-                    <h2>Richiedi Informazioni</h2>
-                    <p class="text-max-800">Per richiedere una <b>demo gratuita</b> o per supporto tecnico, non esitare
-                        a contattarci</p>
-                </div>
-            </div>
-            <form id="sendForm" class="leverage-simple-form">
-                <input type="hidden" name="section" value="leverage_form">
-
-                <div class="row form-group-margin">
-                    <div class="col-12 col-md-6 m-0 p-2 input-group">
-                        <input id="name" type="text" name="name" class="form-control field-name"
-                            placeholder="Richiedente">
-                    </div>
-                    <div class="col-12 col-md-6 m-0 p-2 input-group">
-                        <input id="email" type="email" name="email" class="form-control field-email"
-                            placeholder="Email">
-                    </div>
-                    <div class="col-12 col-md-6 m-0 p-2 input-group">
-                        <input id="telephone" type="text" name="phone" class="form-control field-phone"
-                            placeholder="Telefono">
-                    </div>
-                    <div class="col-12 col-md-6 m-0 p-2 input-group">
-                        <i class="icon-arrow-down mr-3"></i>
-                        <select id="select" name="budget" class="form-control field-budget">
-                            <option value="0" selected disabled>Mediamente quanti clienti ospitano i tuoi eventi?
-                            </option>
-                            <option value="500">500</option>
-                            <option value="1000">1.000</option>
-                            <option value="5000">5.000</option>
-                            <option value="10000">10.000</option>
-                            <option value="more">più di 10.000</option>
-                        </select>
-                    </div>
-                    <div class="col-12 m-0 p-2 input-group">
-                        <textarea id="message" name="message" class="form-control field-message"
-                            placeholder="Messaggio"></textarea>
-                    </div>
-                    <div class="col-12 col-12 m-0 pl-md-2">
-                        <span class="form-alert"></span>
-                    </div>
-                    <div id="sendDiv" class="col-12 input-group m-0 p-2">
-                        <p style="margin-top: -15px;margin-bottom: 5px;">*Tutti i campi sono obbligatori</p>
-                    </div>
-                    <div id="sendDiv" class="col-12 input-group m-0 p-2">
-                        <a id="send" class="btn primary-button"><span class="material-icons"
-                                style="margin-right: 10px;">email</span> INVIA RCHIESTA</a>
-                    </div>
-
-                </div>
-            </form>
-
-            <div id="emailSuccessMessage" class="col-12" style="text-align:center">
-
-                <p style="color:#E0040B;text-align: center;"><b>La tua richiesta è stata inoltrata, verrai
-                        contatto al più presto da uno dei nostri operatori.</b> </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="odd">
-
-        <!-- Footer [links] -->
-        <section id="footer" class="footer">
-            <div class="container">
-                <div class="row items footer-widget">
-                    <div class="col-12 col-lg-3 p-0">
-                        <div class="row">
-                            <div class="branding col-12 p-3 text-center text-lg-left item">
-                                <div class="brand">
-                                    <a href="index.html" class="logo">
-                                        METACLUB
-                                        <!-- 
-                                                Custom Logo
-                                                <img src="assets/images/logo.svg" alt="Leverage">
-                                            -->
-                                    </a>
-                                </div>
-                                <p>Autentico e innovativo.<br />
-                                    Costruito nei minimi dettagli <br />
-                                    con un focus sull'usabilità <br />
-                                    e prestazioni.</p>
-                                <ul class="navbar-nav social share-list mt-0 ml-auto">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"><i class="icon-social-instagram ml-0"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"><i class="icon-social-facebook"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"><i class="icon-social-linkedin"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"><i class="icon-social-twitter"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-9 p-0">
-                        <div class="row">
-                            <div class="col-12 col-lg-4 p-3 text-center text-lg-left item">
-                                <h4 class="title">Contatti</h4>
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-phone mr-2"></i> +39 3295679644
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-envelope mr-2"></i> info@metaclub.app
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-envelope mr-2"></i> support@metaclub.app
-                                        </a>
-                                    </li>
-                                    <!-- <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="icon-location-pin mr-2"></i> Office Street, 123
-                                        </a>
-                                    </li> -->
-                                    <li class="nav-item">
-                                        <a href="#contact"
-                                            class="mt-4 mr-auto ml-auto ml-lg-0 btn dark-button smooth-anchor"><i
-                                                class="icon-speech"></i>INVIA UN MESSAGGIO</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-lg-4 p-3 text-center text-lg-left item">
-                                <h4 class="title">I Nostri Servizi</h4>
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Events Planning</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Gestione Liste</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Controllo Ingressi</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Generazione Comande Bar</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Report in Tempo Reale</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-12 col-lg-4 p-3 text-center text-lg-left item">
-                                <h4 class="title">Popular Tags</h4>
-                                <a href="#" class="badge tag">Liste</a>
-                                <a href="#" class="badge tag">Eventi</a>
-                                <a href="#" class="badge tag">App</a>
-                                <a href="#" class="badge tag">Gestione</a>
-                                <a href="#" class="badge tag">Controllo</a>
-                                <a href="#" class="badge tag">PR</a>
-                                <a href="#" class="badge tag">Bar</a>
-                                <a href="#" class="badge tag">Drink</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Copyright -->
-        <section id="copyright" class="p-3 copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 p-3 text-center text-lg-left">
-
-                    </div>
-                    <div class="col-12 col-md-6 p-3 text-center text-lg-right">
-                        <p>© 2020 METACLUB is Proudly Powered by <a href="" target="_blank">Enzo Buffa</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </footer>
-
-
-
-
+<!-- ===================== FEATURES ===================== -->
+<section id="features">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="tag">Perché METACLUB</div>
+      <h2 class="sec-h2">Il sistema scelto dagli<br><span class="grad">event organizer</span></h2>
+      <p class="sec-p">Studiato per migliorare l'efficienza del personale e dei collaboratori, ottimizzando le risorse per ottenere maggiori profitti.</p>
     </div>
 
-    <!-- Modal [responsive menu] -->
-    <div id="menu" class="p-0 modal fade" role="dialog" aria-labelledby="menu" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-slideout" role="document">
-            <div class="modal-content full">
-                <div class="modal-header" data-dismiss="modal">
-                    Menu <i class="icon-close"></i>
-                </div>
-                <div class="menu modal-body">
-                    <div class="row w-100">
-                        <div class="items p-0 col-12 text-center">
-                            <!-- Append [navbar] -->
-                        </div>
-                        <div class="contacts p-0 col-12 text-center">
-                            <!-- Append [navbar] -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal d1">
+        <div class="feat-icon"><span class="material-icons-outlined">account_tree</span></div>
+        <h3>Organizza le Risorse</h3>
+        <p>Centralizza e digitalizza tutte le informazioni del tuo club in un'unica piattaforma integrata.</p>
+        <ul class="feat-list">
+          <li>Digitalizzazione delle informazioni</li>
+          <li>Pianificazione eventi</li>
+          <li>Struttura gerarchica dello staff</li>
+          <li>Condivisione risorse</li>
+          <li>Dati in tempo reale</li>
+        </ul>
+      </div>
+      <div class="feat-card reveal d2">
+        <div class="feat-icon"><span class="material-icons-outlined">contacts</span></div>
+        <h3>Sorveglia il Personale</h3>
+        <p>Monitora l'operatività e misura l'efficienza di tutto il tuo team in ogni momento della serata.</p>
+        <ul class="feat-list">
+          <li>Controllo operatività</li>
+          <li>Misurazione efficienza</li>
+          <li>Visualizzazione storico</li>
+          <li>Gestione pagamenti</li>
+          <li>Premiazioni</li>
+        </ul>
+      </div>
+      <div class="feat-card reveal d3">
+        <div class="feat-icon"><span class="material-icons-outlined">widgets</span></div>
+        <h3>Ottimizza i Processi</h3>
+        <p>Riduci i tempi di attesa, abbatti i costi operativi e aumenta i profitti con flussi intelligenti.</p>
+        <ul class="feat-list">
+          <li>Smaltimento code all'ingresso</li>
+          <li>Erogazione rapida drink</li>
+          <li>Riduzione costi di gestione</li>
+          <li>Visione situazione economica</li>
+          <li>Applicazione strategie</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MODULES ===================== -->
+<section id="modules">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="tag">Moduli</div>
+      <h2 class="sec-h2">Tutto sotto controllo,<br><span class="grad">mai così semplice</span></h2>
+      <p class="sec-p">Ogni aspetto operativo del tuo club gestito da un sistema integrato, connesso e sempre aggiornato.</p>
+    </div>
+
+    <div class="mod-grid">
+      <div class="mod-card reveal d1">
+        <div class="mod-icon"><span class="material-icons-outlined">dvr</span></div>
+        <h3>Liste</h3>
+        <p>Creazione e condivisione liste tramite app, con gestione avanzata dei permessi per ogni singola lista e PR.</p>
+      </div>
+      <div class="mod-card reveal d2">
+        <div class="mod-icon"><span class="material-icons-outlined">table_restaurant</span></div>
+        <h3>Prenotazioni Tavoli</h3>
+        <p>Visione topografica delle prenotazioni e gestione comande tramite smartphone in tempo reale.</p>
+      </div>
+      <div class="mod-card reveal d3">
+        <div class="mod-icon"><span class="material-icons-outlined">qr_code_2</span></div>
+        <h3>Controllo Ingressi</h3>
+        <p>Pagamenti al botteghino più veloci grazie ai sistemi avanzati di identificazione delle prenotazioni via QR.</p>
+      </div>
+      <div class="mod-card reveal d4">
+        <div class="mod-icon"><span class="material-icons-outlined">group</span></div>
+        <h3>Provvigioni PR</h3>
+        <p>Provvigioni generate automaticamente, visibili ai PR e monitorabili in tempo reale nel corso dell'evento.</p>
+      </div>
+      <div class="mod-card reveal d5">
+        <div class="mod-icon"><span class="material-icons-outlined">liquor</span></div>
+        <h3>Produzione Bar</h3>
+        <p>Visione in tempo reale sugli incassi delle casse bar e report dettagliati sui prodotti venduti.</p>
+      </div>
+      <div class="mod-card reveal d6">
+        <div class="mod-icon"><span class="material-icons-outlined">inventory_2</span></div>
+        <h3>Magazzino</h3>
+        <p>Gestione multi-magazzino per la tracciabilità completa del ciclo di vita del prodotto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOFTWARE ===================== -->
+<section id="software">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="tag">La Suite</div>
+      <h2 class="sec-h2">Software stabili<br><span class="grad">e performanti</span></h2>
+      <p class="sec-p">Tecnologie di ultima generazione — stabili, sicuri, sempre aggiornati. Tutte le comunicazioni avvengono tramite protocolli SSL cifrati.</p>
+    </div>
+
+    <div class="sw-grid">
+      <div class="sw-card reveal d1">
+        <img class="sw-img" src="assets/images/software/tablet.jpg" alt="Meta Admin">
+        <div class="sw-body">
+          <div class="sw-tag">
+            <span class="material-icons-outlined" style="font-size:11px">tune</span>
+            Admin Panel
+          </div>
+          <h3>META ADMIN</h3>
+          <p>Pannello di controllo per configurare il proprio club ed applicare agli eventi le proprie strategie commerciali in modo semplice e rapido.</p>
+          <a href="#contact" class="btn-p" style="font-size:14px;padding:11px 22px;align-self:flex-start;">Richiedi Demo</a>
         </div>
+      </div>
+      <div class="sw-card reveal d2">
+        <img class="sw-img" src="assets/images/software/app.jpg" alt="Meta App">
+        <div class="sw-body">
+          <div class="sw-tag">
+            <span class="material-icons-outlined" style="font-size:11px">aod</span>
+            Mobile App
+          </div>
+          <h3>META APP</h3>
+          <p>App per monitorare prenotazioni, liste, guadagni e costi in tempo reale, ovunque ti trovi — dal tuo smartphone.</p>
+          <a href="#contact" class="btn-p" style="font-size:14px;padding:11px 22px;align-self:flex-start;">Richiedi Demo</a>
+        </div>
+      </div>
+      <div class="sw-card reveal d3">
+        <img class="sw-img" src="assets/images/software/ticket.jpg" alt="Meta Check-in">
+        <div class="sw-body">
+          <div class="sw-tag">
+            <span class="material-icons-outlined" style="font-size:11px">laptop_mac</span>
+            Desktop
+          </div>
+          <h3>META CHECK-IN</h3>
+          <p>Applicazione desktop per il controllo rapido degli ingressi, riducendo notevolmente i tempi di attesa al botteghino grazie ai QR.</p>
+          <a href="#contact" class="btn-p" style="font-size:14px;padding:11px 22px;align-self:flex-start;">Richiedi Demo</a>
+        </div>
+      </div>
+      <div class="sw-card reveal d4">
+        <img class="sw-img" src="assets/images/software/bar2.jpg" alt="Meta Order">
+        <div class="sw-body">
+          <div class="sw-tag">
+            <span class="material-icons-outlined" style="font-size:11px">point_of_sale</span>
+            POS
+          </div>
+          <h3>META ORDER</h3>
+          <p>Applicazione per la generazione sicura e veloce delle comande e per tenere traccia precisa di tutta la produzione bar.</p>
+          <a href="#contact" class="btn-p" style="font-size:14px;padding:11px 22px;align-self:flex-start;">Richiedi Demo</a>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Scroll [to top] -->
-    <div id="scroll-to-top" class="scroll-to-top">
-        <a href="#header" class="smooth-anchor">
-            <i class="icon-arrow-up"></i>
-        </a>
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="assets/images/about-4.jpg" alt="Sempre a tuo fianco">
+      </div>
+      <div class="about-txt reveal d2">
+        <div class="tag">Supporto</div>
+        <h2>Sempre a tuo<br><span class="grad">fianco</span></h2>
+        <p>Collaboriamo attivamente agli eventi per supportare gli organizzatori nella gestione dei propri locali, fornendo soluzioni alle problematiche rilevate e proponendo metodi per ottimizzare la produzione, mantenendo le strategie commerciali.</p>
+        <div class="about-items">
+          <div class="about-item">
+            <div class="ab-icon">
+              <span class="material-icons-outlined" style="font-size:20px">people_outline</span>
+            </div>
+            <div>
+              <h4>Configurazione Assistita e Formazione</h4>
+              <p>Seguiamo i nostri clienti passo dopo passo, dalla configurazione iniziale fino alla piena autonomia nell'utilizzo del sistema.</p>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="ab-icon">
+              <span class="material-icons-outlined" style="font-size:20px">schedule</span>
+            </div>
+            <div>
+              <h4>Supporto Immediato</h4>
+              <p>I nostri operatori restano attivi prima e durante l'evento per fornire tempestivamente qualsiasi tipo di supporto o delucidazione.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- ==============================================
-        Google reCAPTCHA // Put your site key here
-        =============================================== -->
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <div class="tag">Contatti</div>
+        <h2>Richiedi una<br><span class="grad">Demo Gratuita</span></h2>
+        <p>Per richiedere una demo gratuita o per supporto tecnico, non esitare a contattarci. Risponderemo entro poche ore.</p>
+        <div class="cdetails">
+          <div class="cdetail">
+            <div class="cdetail-icon"><span class="material-icons-outlined" style="font-size:18px">phone</span></div>
+            <span>+39 329 567 9644</span>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon"><span class="material-icons-outlined" style="font-size:18px">email</span></div>
+            <span>info@metaclub.app</span>
+          </div>
+          <div class="cdetail">
+            <div class="cdetail-icon"><span class="material-icons-outlined" style="font-size:18px">support_agent</span></div>
+            <span>support@metaclub.app</span>
+          </div>
+        </div>
+      </div>
 
-    <!-- ==============================================
-        Vendor Scripts
-        =============================================== -->
-    <script src="assets/js/vendor/jquery.min.js"></script>
-    <script src="assets/js/vendor/jquery.easing.min.js"></script>
-    <script src="assets/js/vendor/jquery.inview.min.js"></script>
-    <script src="assets/js/vendor/popper.min.js"></script>
-    <script src="assets/js/vendor/bootstrap.min.js"></script>
-    <script src="assets/js/vendor/ponyfill.min.js"></script>
-    <script src="assets/js/vendor/slider.min.js"></script>
-    <script src="assets/js/vendor/animation.min.js"></script>
-    <script src="assets/js/vendor/progress-radial.min.js"></script>
-    <script src="assets/js/vendor/bricklayer.min.js"></script>
-    <script src="assets/js/vendor/gallery.min.js"></script>
-    <script src="assets/js/vendor/shuffle.min.js"></script>
-    <script src="assets/js/vendor/cookie-notice.min.js"></script>
-    <script src="assets/js/vendor/particles.min.js"></script>
-    <script src="assets/js/main.js"></script>
+      <div class="cf reveal d2">
+        <form id="sendForm">
+          <div class="cf-row">
+            <div class="fg">
+              <label for="name">Nome e Cognome</label>
+              <input id="name" type="text" name="name" placeholder="Mario Rossi">
+            </div>
+            <div class="fg">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="mario@esempio.it">
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="fg">
+              <label for="telephone">Telefono</label>
+              <input id="telephone" type="tel" name="phone" placeholder="+39 000 000 0000">
+            </div>
+            <div class="fg">
+              <label for="select">Capacità Media Evento</label>
+              <select id="select" name="budget">
+                <option value="" selected disabled>Seleziona...</option>
+                <option value="500">Fino a 500 persone</option>
+                <option value="1000">500 – 1.000 persone</option>
+                <option value="5000">1.000 – 5.000 persone</option>
+                <option value="10000">5.000 – 10.000 persone</option>
+                <option value="more">Più di 10.000 persone</option>
+              </select>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="message">Messaggio</label>
+            <textarea id="message" name="message" placeholder="Descrivi brevemente le tue esigenze..."></textarea>
+          </div>
+          <p class="cf-note">* Tutti i campi sono obbligatori</p>
+          <button id="send" type="button" class="btn-p" style="width:100%;justify-content:center;font-size:15px;padding:14px;">
+            <span class="material-icons-outlined" style="font-size:18px">send</span>
+            Invia Richiesta
+          </button>
+        </form>
+        <div id="form-ok">
+          <span class="ok-ico">✅</span>
+          <h3>Richiesta inviata!</h3>
+          <p>Verrai contattato al più presto da uno dei nostri operatori.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <a href="#" class="nav-logo" style="font-size:24px">METACLUB</a>
+        <p>Autentico e innovativo. Costruito nei minimi dettagli con un focus sull'usabilità e le prestazioni.</p>
+        <div class="f-social">
+          <a href="#" aria-label="Instagram"><span class="material-icons-outlined" style="font-size:17px">photo_camera</span></a>
+          <a href="#" aria-label="Facebook"><span class="material-icons-outlined" style="font-size:17px">facebook</span></a>
+          <a href="#" aria-label="LinkedIn"><span class="material-icons-outlined" style="font-size:17px">work_outline</span></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h5>Servizi</h5>
+        <ul>
+          <li><a href="#">Events Planning</a></li>
+          <li><a href="#">Gestione Liste</a></li>
+          <li><a href="#">Controllo Ingressi</a></li>
+          <li><a href="#">Comande Bar</a></li>
+          <li><a href="#">Report Real-Time</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Contatti</h5>
+        <ul>
+          <li><a href="tel:+393295679644">+39 329 567 9644</a></li>
+          <li><a href="mailto:info@metaclub.app">info@metaclub.app</a></li>
+          <li><a href="mailto:support@metaclub.app">support@metaclub.app</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h5>Tags</h5>
+        <div class="f-tags">
+          <a href="#" class="f-tag">Liste</a>
+          <a href="#" class="f-tag">Eventi</a>
+          <a href="#" class="f-tag">App</a>
+          <a href="#" class="f-tag">Gestione</a>
+          <a href="#" class="f-tag">Ingressi</a>
+          <a href="#" class="f-tag">PR</a>
+          <a href="#" class="f-tag">Bar</a>
+          <a href="#" class="f-tag">Tavoli</a>
+        </div>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p>© 2024 METACLUB — Sviluppato da <a href="#">Enzo Buffa</a>.</p>
+      <p>Tutti i diritti riservati.</p>
+    </div>
+  </div>
+</footer>
 
-        function checkFieldRequirents() {
-            if ($("#name").val() == "") { alert("Specificare il richiedente"); return false; }
-            if ($("#email").val() == "") { alert("Specificare l' email"); return false; }
-            if ($("#telephone").val() == "") { alert("Specificare il numero di telefono"); return false; }
-            if ($("#select").val() == "") { alert("Specificare il numero di clienti medio"); return false; }
-            if ($("#message").val() == "") { alert("Specificare un messaggio"); return false; }
-            return true;
-        }
+<!-- Scroll to top -->
+<a href="#" id="s2t" aria-label="Torna in cima">
+  <span class="material-icons-outlined" style="font-size:20px">keyboard_arrow_up</span>
+</a>
 
-        $(document).ready(function () {
+<!-- ===================== SCRIPTS ===================== -->
+<script src="assets/js/vendor/jquery.min.js"></script>
+<script>
+/* ── Navbar scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('stuck', window.scrollY > 40);
+  document.getElementById('s2t').classList.toggle('on', window.scrollY > 500);
+});
 
-            $("#emailSuccessMessage").hide();
-            $("#send").click(function () {
+/* ── Scroll to top ── */
+document.getElementById('s2t').addEventListener('click', e => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
+/* ── Mobile menu ── */
+const burger   = document.getElementById('burger');
+const mobNav   = document.getElementById('mob-nav');
+burger.addEventListener('click', () => mobNav.classList.toggle('open'));
+document.querySelectorAll('#mob-nav a').forEach(a =>
+  a.addEventListener('click', () => mobNav.classList.remove('open'))
+);
 
-                if (checkFieldRequirents()) {
-                    $("#send").html("<span class='material-icons' style='margin-right: 10px;'>send</span> INVIO RCHIESTA IN CORSO...");
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
 
-                    let jsonObj =
-                    {
-                        'metadata': { 'action': 'request_email', 'rowsNumber': 1, 'disco_id': 1, 'database': 'METACLUB' },
-                        'data': [
-                            {
-                                name: $("#name").val(),
-                                email: $("#email").val(),
-                                telephone: $("#telephone").val(),
-                                select: $("#select").val(),
-                                message: $("#message").val()
-                            }
-                        ]
-                    };
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
+/* ── Contact form ── */
+function validate() {
+  if (!$('#name').val().trim())      { alert('Specificare il richiedente'); return false; }
+  if (!$('#email').val().trim())     { alert("Specificare l'email"); return false; }
+  if (!$('#telephone').val().trim()) { alert('Specificare il numero di telefono'); return false; }
+  if (!$('#select').val())           { alert('Specificare la capacità media evento'); return false; }
+  if (!$('#message').val().trim())   { alert('Specificare un messaggio'); return false; }
+  return true;
+}
 
+$('#send').on('click', function () {
+  if (!validate()) return;
+  const $b = $(this);
+  $b.html('<span class="material-icons-outlined" style="font-size:18px">hourglass_top</span> Invio in corso...').prop('disabled', true);
 
-                    $.ajax({
-                        method: "POST",
-                        url: "https://www.metaclub.cloud/api/api.php",
-                        data: JSON.stringify(jsonObj)
-                    })
-                        .done(function (msg) {
-
-                            debugger
-                            $("#emailSuccessMessage").show();
-                            $("#sendForm").hide();
-                            //alert(msg.data[0].message);
-                        });
-
-                }
-
-
-            }); F
-        });
-
-    </script>
-
-    <!-- #endregion Global ========================= -->
-
+  $.ajax({
+    method: 'POST',
+    url: 'https://www.metaclub.cloud/api/api.php',
+    data: JSON.stringify({
+      metadata: { action: 'request_email', rowsNumber: 1, disco_id: 1, database: 'METACLUB' },
+      data: [{
+        name: $('#name').val(),
+        email: $('#email').val(),
+        telephone: $('#telephone').val(),
+        select: $('#select').val(),
+        message: $('#message').val()
+      }]
+    })
+  }).done(() => {
+    $('#sendForm').hide();
+    $('#form-ok').show();
+  }).fail(() => {
+    $b.html('<span class="material-icons-outlined" style="font-size:18px">send</span> Invia Richiesta').prop('disabled', false);
+    alert('Si è verificato un errore. Riprova più tardi.');
+  });
+});
+</script>
 </body>
-
-<!-- Mirrored from leverage.codings.dev/demo-2-one-page by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 14 Nov 2020 01:16:45 GMT -->
-
 </html>
