@@ -139,11 +139,13 @@ h1,h2,h3,h4 { font-family: var(--fd); line-height: 1.12; letter-spacing: -0.025e
   display:flex; align-items:center; justify-content:space-between; gap:24px;
 }
 .nav-logo {
+  display:flex; align-items:center; gap:10px;
   font-family:var(--fd); font-size:21px; font-weight:800;
   letter-spacing:-.03em; text-decoration:none;
   background:linear-gradient(135deg,#fff,#a78bfa);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
 }
+.nav-logo img { width:36px; height:36px; object-fit:contain; filter:brightness(0) invert(1); flex-shrink:0; }
 .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
 .nav-links a {
   color:var(--text-2); text-decoration:none; font-size:14px; font-weight:500;
@@ -483,7 +485,8 @@ h1,h2,h3,h4 { font-family: var(--fd); line-height: 1.12; letter-spacing: -0.025e
    ============================================================ */
 footer { background:var(--surface); border-top:1px solid var(--border); padding:80px 0 0; }
 .fg-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:48px; padding-bottom:60px; }
-.flogo { font-family:var(--fd); font-size:22px; font-weight:800; letter-spacing:-.04em; background:linear-gradient(135deg,#fff,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.flogo { display:flex; align-items:center; gap:10px; font-family:var(--fd); font-size:22px; font-weight:800; letter-spacing:-.04em; background:linear-gradient(135deg,#fff,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.flogo img { width:40px; height:40px; object-fit:contain; filter:brightness(0) invert(1); flex-shrink:0; }
 .fbrand > p { font-size:14px; color:var(--text-2); line-height:1.72; margin:14px 0 22px; max-width:230px; }
 .fsocial { display:flex; gap:9px; }
 .fsocial a { width:36px; height:36px; border-radius:var(--r-sm); background:rgba(255,255,255,.05); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-2); font-size:17px; transition:background .2s,border-color .2s,color .2s; }
@@ -546,7 +549,10 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
 <!-- ===================== NAV ===================== -->
 <nav id="nav">
   <div class="nav-in">
-    <a href="#" class="nav-logo">METACLUB</a>
+    <a href="#" class="nav-logo">
+      <img src="assets/images/logo_trasparente2.png" alt="METACLUB logo">
+      METACLUB
+    </a>
     <ul class="nav-links">
       <li><a href="#features">Funzionalità</a></li>
       <li><a href="#modules">Moduli</a></li>
@@ -942,7 +948,10 @@ footer { background:var(--surface); border-top:1px solid var(--border); padding:
   <div class="container">
     <div class="fg-grid">
       <div class="fbrand">
-        <div class="flogo">METACLUB</div>
+        <div class="flogo">
+          <img src="assets/images/logo_trasparente2.png" alt="METACLUB logo">
+          METACLUB
+        </div>
         <p>Il sistema operativo per chi gestisce la notte. Costruito da chi conosce il settore, per chi vuole portarlo al livello successivo.</p>
         <div class="fsocial">
           <a href="#" aria-label="Instagram"><span class="material-icons-outlined" style="font-size:16px">photo_camera</span></a>
